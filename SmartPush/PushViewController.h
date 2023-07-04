@@ -31,16 +31,19 @@
 }
 @property (unsafe_unretained) IBOutlet NSTextView *payload;
 @property (unsafe_unretained) IBOutlet NSTextView *logTextView;
-@property (weak) IBOutlet NSMatrix *mode;
-@property (weak) IBOutlet NSButtonCell *devSelect;
-@property (weak) IBOutlet NSButtonCell *productSelect;
 @property (weak) IBOutlet NSPopUpButton *payLoadPopUpButton;
-@property (weak) IBOutlet NSTextField *tokenTextField;
 @property (weak) IBOutlet DragPopUpButton *cerPopUpButton;
 @property (weak) IBOutlet NSSegmentedControl *prioritySegmentedControl;
-@property (weak) IBOutlet NSPopUpButton *payloadTypeButton;
+@property (weak) IBOutlet NSPopUpButton *pushTypeButton;
+@property (weak) IBOutlet NSTextField *teamIDKeyTextField;
+@property (weak) IBOutlet NSTextField *teamIDTextField;
+@property (weak) IBOutlet NSTextField *keyIDKeyTextField;
+@property (weak) IBOutlet NSTextField *keyIDTextField;
+@property (weak) IBOutlet NSTextField *bundleIDKeyTextField;
+@property (weak) IBOutlet NSTextField *bundleIDTextField;
+@property (weak) IBOutlet NSTextField *tokenKeyTextField;
+@property (weak) IBOutlet NSTextField *deviceTokenTextField;
 
-- (IBAction)connect:(id)sender;
 - (IBAction)push:(id)sender;
 - (IBAction)modeSwitch:(id)sender;
 - (IBAction)payLoadButtonTouched:(id)sender;

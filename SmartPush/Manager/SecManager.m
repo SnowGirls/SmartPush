@@ -34,6 +34,7 @@
     [formatter setDateStyle:NSDateFormatterShortStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     Sec *secModel = [[Sec alloc]init];
+    secModel.type = SecTypeCer;
     secModel.certificateRef = sec;
 
     secModel.name = [self subjectSummaryWithCertificate:sec];
@@ -44,7 +45,25 @@
 
     return secModel;
 }
-+ (BOOL)isPushCertificateWithName:(NSString*)name{
+
++ (Sec *)secModelWithP8Path:(NSString *)path {
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    NSURL *fileUrl = [NSURL fileURLWithPath:path];
+    NSData *p8Data = [NSData dataWithContentsOfURL:fileUrl];
+    NSString *p8String = [[NSString alloc] initWithData:p8Data encoding:NSUTF8StringEncoding];
+    Sec *secModel = [[Sec alloc] init];
+    secModel.type = SecTypeP8;
+    secModel.p8String = p8String;
+    secModel.name = fileUrl.lastPathComponent;
+    secModel.date = [NSDate date];
+    secModel.expire = @(60 * 60).stringValue;
+    return secModel;
+}
+
++ (BOOL)isPushCertificateWithName:(NSString*)name {
     
     if ([name rangeOfString:@"Apple Development IOS Push Services:"].location != NSNotFound ||
         [name rangeOfString:@"Apple Production IOS Push Services:"].location != NSNotFound||

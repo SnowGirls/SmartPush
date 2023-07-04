@@ -26,3 +26,6 @@ DerivedData
 # Pods/
 SmartPush/.DS_Store
 .DS_Store
+
+.idea/
+
